@@ -11,6 +11,8 @@ function BasketList(props) {
         return sum +el.price * el.quantity
     }, 0)
 
+    
+
     return (
         <ul className="collection basket-list">
             <li  className="collection-item active">Корзина</li>
@@ -23,7 +25,8 @@ function BasketList(props) {
                     {...item}/>
                 )): <li className="collection-item ">Корзина пуста</li>
             }
-            <li className="collection-item active">Общая стоймость: {totalPrice} тг.</li>
+            <li className="collection-item active">Общая стоймость: {totalPrice} тг.
+            <button className="secondary-content btn">Оформить</button></li>
             <i className="material-icons basket-close" onClick={handleBasketShow}>close</i>
       </ul>
     )

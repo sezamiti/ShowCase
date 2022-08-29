@@ -4,12 +4,15 @@ import {Preloader} from "./Preloader";
 import{ GoodsList } from './GoodsList'
 import{ Cart } from './Cart'
 import {BasketList} from "./BasketList";
+import {Alert} from "./Alert";
+
 
 function Shop() {
     const [goods, setGoods] = useState([]);
     const [loading, setLoading] = useState(true)
     const [order, setOrder] = useState([])
     const [isBasketShow, setBasketShow] = useState(false)
+    const [alertName, setAlertName]= useState('')
 
     // console.log(order);
     const addToBasket = (item) =>{
@@ -36,8 +39,12 @@ function Shop() {
 
             setOrder(newOrder)
         }
-
+    setAlertName(item.name)
         
+    }
+
+    const closeAlert = () =>{
+        setAlertName('')
     }
 
     const removeFromBasket = (itemId) => {
@@ -103,6 +110,9 @@ function Shop() {
             decQuantity={decQuantity}/>
 
             
+        }
+        {
+            alertName && <Alert name= {alertName} closeAlert={closeAlert}/>
         }
     </main>
 }
