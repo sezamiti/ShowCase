@@ -1,10 +1,24 @@
-function Cart(props) {
-    const {quantity = 0, handleBasketShow = Function.prototype} = props;
+import { useContext } from 'react';
+import { ShopContext } from '../context';
 
-    return <div className="cart blue darken-2 white-text" onClick={handleBasketShow}>
-        <i className="material-icons">shopping_cart</i>
-        {quantity ? <span className="cart-quantity">{quantity}</span> : null}
-    </div>
+function Cart() {
+    const { order, handleBasketShow = Function.prototype } = useContext(
+        ShopContext
+    );
+
+    const quantity = order.length;
+
+    return (
+        <div
+            className='cart blue darken-4 white-text'
+            onClick={handleBasketShow}
+        >
+            <i className='material-icons'>shopping_cart</i>
+            {quantity ? (
+                <span className='cart-quantity'>{quantity}</span>
+            ) : null}
+        </div>
+    );
 }
 
-export {Cart}
+export { Cart };
